@@ -1,0 +1,24 @@
+{
+  "name": "@unclepaul/allcount-azure-event-hubs-module",
+  "version": "1.0.0",
+  "description": "Provides ability to publish to Azure Event Hubs from CRUD hooks.",
+  "main": "./azure-event-hubs-module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@unclepaul/allcountjs": ">=1.28.0",
+    "azure-event-hubs":"^0.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unclepaul84/allcount-azure-event-hubs-module.git"
+  },
+  "author": "Paul Kotlyar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unclepaul84/allcount-azure-event-hubs-module/issues"
+  },
+
+  "homepage": "https://github.com/unclepaul84/allcount-azure-event-hubs-module#readme"
+}
