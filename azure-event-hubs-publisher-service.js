@@ -100,11 +100,14 @@ module.exports = function (Q, storageDriver, entityDescriptionService, baseUrlSe
                     else if (newEntity === null)
                         actionType = 'delete';
 
-                    var entity = oldEntity;
+                    let entity = oldEntity;
+
+                    if( actionType === 'create')
+                        entity = newEntity;
 
                     var payload = { sender: baseUrlService.getBaseUrl(), actionTime: new Date().toISOString(), actionType: actionType, entityName: entityTypeId, entity: entity };
 
-                    if (oldEntity) {
+                    if (actionType === 'update') { //for update callback, only changed fields will be populated in the call back, we want all of them, that is why we have to look them up
                         storageDriver.readEntity(tableDescriptor, oldEntity.id).then(function (entityFromDb) {
 
                             payload.entity = entityFromDb;

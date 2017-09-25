@@ -1,6 +1,6 @@
 {
   "name": "@unclepaul/allcount-azure-event-hubs-module",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Provides ability to publish to Azure Event Hubs from CRUD hooks.",
   "main": "./azure-event-hubs-module.js",
   "scripts": {
