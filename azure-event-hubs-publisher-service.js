@@ -103,7 +103,7 @@ module.exports = function (Q, storageDriver, entityDescriptionService, baseUrlSe
                     let entity = oldEntity;
 
                     if( actionType === 'create')
-                        entity = newEntity;
+                        entity== newEntity;
 
                     var payload = { sender: baseUrlService.getBaseUrl(), actionTime: new Date().toISOString(), actionType: actionType, entityName: entityTypeId, entity: entity };
 
