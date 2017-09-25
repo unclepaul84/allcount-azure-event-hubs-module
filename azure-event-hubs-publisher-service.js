@@ -55,6 +55,10 @@ module.exports = function (Q, storageDriver, entityDescriptionService, baseUrlSe
                 if (self.evtHubsCfg.autoPublishCrudActions) {
                     _.forEach(entityDescriptionService.entityDescriptions, function (entityDescriptor, entityTypeId) {
 
+                        if(entityDescriptor.tableDescription.tableName != entityDescriptor.tableDescription.entityTypeId)
+                                return;
+                        
+
                         if (self.evtHubsCfg.entityTypeIdIncludeFilter) {
                             var fRx = new RegExp(self.evtHubsCfg.autoPublishCrudActionsEntityIncludeFilter);
 
@@ -87,7 +91,7 @@ module.exports = function (Q, storageDriver, entityDescriptionService, baseUrlSe
                 }
 
                 function buildJsonPayload(entityTypeId, tableDescriptor, oldEntity, newEntity) {
-
+        
                     var deferred = Q.defer();
 
                     var actionType = 'update';
@@ -100,7 +104,7 @@ module.exports = function (Q, storageDriver, entityDescriptionService, baseUrlSe
 
                     var payload = { sender: baseUrlService.getBaseUrl(), actionTime: new Date().toISOString(), actionType: actionType, entityName: entityTypeId, entity: entity };
 
-                    if (actionType != 'delete') {
+                    if (oldEntity) {
                         storageDriver.readEntity(tableDescriptor, oldEntity.id).then(function (entityFromDb) {
 
                             payload.entity = entityFromDb;
